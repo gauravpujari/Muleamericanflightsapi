@@ -12,7 +12,6 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
     <db:mysql-config name="MySQL_Configuration" host="mudb.mulesoft-training.com" port="3306" user="mule" password="mule" database="training" doc:name="MySQL Configuration"/>
     <db:mysql-config name="MySQL_Configuration1" host="mudb.mulesoft-training.com" port="3306" user="mule" password="mule" database="training" doc:name="MySQL Configuration"/>
-    <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="http://localhost:9191/essentials/delta?wsdl" service="" port="" serviceAddress="" doc:name="Web Service Consumer"/>
     <ws:consumer-config name="Web_Service_Consumer1" wsdlLocation="http://localhost:9191/essentials/delta?wsdl" service="DeltaFlightsService" port="DeltaFlightsServiceImplPort" serviceAddress="http://localhost:9191/essentials/delta" doc:name="Web Service Consumer"/>
     <flow name="getFlightsFlow">
         <db:select config-ref="MySQL_Configuration1" doc:name="Database">
@@ -21,7 +20,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     </flow>
     <flow name="getSingleFlightFlow">
         <db:select config-ref="MySQL_Configuration1" doc:name="Database">
-            <db:parameterized-query><![CDATA[select * from american where id = #[message.inboundProperties'http.uri.params'.ID]]]></db:parameterized-query>
+            <db:parameterized-query><![CDATA[select * from american where id = #[message.inboundProperties.'http.uri.params'.id]]]></db:parameterized-query>
         </db:select>
     </flow>
 </mule>

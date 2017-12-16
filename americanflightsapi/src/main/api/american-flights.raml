@@ -42,6 +42,7 @@ types:
             application/json:
               example:
                 message: Flight deleted (but not really)
+
   /{id}:
     get:
       responses: 
@@ -53,3 +54,4 @@ types:
               type: AmericanFlight
               example: !include examples/FlightExample.raml
                 #message: 'get id'
+
