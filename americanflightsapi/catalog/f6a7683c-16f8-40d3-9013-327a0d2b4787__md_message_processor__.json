@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "Flights_json"
+        }
+    },
+    "id": "f6a7683c-16f8-40d3-9013-327a0d2b4787",
+    "version": "5.2.0.0"
+}

@@ -1,0 +1,55 @@
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/ca3fa14f-e108-40bb-887a-11ca6a5549d3 # 
+title: American Flights
+types: 
+  AmericanFlight: !include exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml
+/flights:
+  get:
+    responses: 
+      200:
+        body: 
+          application/json:
+            #example:
+              #{message: 'Hello World!'}
+            type: AmericanFlight[]
+            example: !include exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml
+  post:
+    body: 
+      application/json:
+        type: AmericanFlight
+        example: !include examples/FlightExample.raml
+    responses: 
+      200:
+        body: 
+          application/json:
+            example:
+              {message: 'Flight added sucessfully'}
+  put:
+    body: 
+      application/json:
+        type: AmericanFlight
+        example: !include examples/FlightExample.raml
+    responses: 
+      200:
+        body: 
+          application/json:
+              example:
+                message: Flight updated (but not really)
+  delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                message: Flight deleted (but not really)
+  /{id}:
+    get:
+      responses: 
+        200:
+          body: 
+            application/json:
+              #example:
+                #
+              type: AmericanFlight
+              example: !include examples/FlightExample.raml
+                #message: 'get id'
